@@ -42,10 +42,10 @@ console.log("\n Ejercicio 4. Calcular Promedio de Notas")
 function calcularPromedio(notas){
     let suma = 0;
     for (let i =0; i<notas.length; i++){
-        suma += notas[i]
-    }
-    let promedio = suma/notas.length
-    return promedio
+        suma += notas[i];
+    };
+    let promedio = suma/notas.length;
+    return promedio.toFixed(2);
 }
 let cantNotas = Number(prompt("Cuántas notas desea ingresar?: "));
 let notas =[];
@@ -55,3 +55,64 @@ for (let i=0; i<cantNotas; i++){
 }
 let promedio = calcularPromedio(notas);
 console.log("El promedio de las notas es: "+ promedio);
+
+console.log("\n Ejercicio 5 Filtrar usuarios por edad");
+function filtrarUsuarios (usuarios, edadMinima){
+    let mayores = {};
+    for (let nombre in usuarios){
+        if (usuarios[nombre]>=edadMinima){
+            mayores[nombre]=usuarios[nombre];
+        }
+    }
+    return mayores;
+};
+const usuarios ={
+    maria:12,
+    juan:20,
+    luis:15,
+    teresa:22,
+    diana:30
+};
+let edadMinima = Number(prompt("Ingrese la edad mínima para ingresar: "));
+let filtro = filtrarUsuarios(usuarios,edadMinima);
+console.log(filtro);
+
+console.log ("\n Ejercicio 6. Contador Palabras");
+function contarPalabras(frase) {
+    let cantpalabras = frase.trim().split(/\s+/);
+    return cantpalabras.length;
+}
+let frase_usu = prompt("Ingrese una frase: ");
+cantidadPalabras = contarPalabras(frase_usu);
+console.log("La frase ingresada contiene "+cantidadPalabras+" palabras");
+
+console.log("\n Ejercicio 7. Simulador de Cajero Automático");
+function retirarDinero(saldo,monto){
+    if (monto > saldo){
+        console.log("FONDOS INSUFICIENTES");
+    }
+    else{
+        let nuevosaldo = saldo - monto;
+        console.log("Saldo disponible: "+nuevosaldo);
+        return nuevosaldo;
+    }
+}
+let saldo = Number(prompt("Ingrese su saldo actual: "));
+let monto = Number(prompt("Ingrese el valor a retirar: "));
+
+nuevosaldo1 = retirarDinero(saldo,monto);
+
+console.log("\n Ejercicio 8. Cambio Moneda");
+function convertirMoneda(montoCOP, monedaDestino){
+    monedaDestino = monedaDestino.toUpperCase();
+    let conversion = montoCOP / trm[monedaDestino];
+    return conversion.toFixed(2);
+};
+const trm = {
+    USD: 3500,
+    EUR: 4300
+};
+let montoCOP = Number(prompt("Ingrese el monto a cambiar: "));
+let monedaDestino = prompt("Ingrese la moneda para realizar la conversión (USD / EUR): ");
+let cambiotrm = convertirMoneda(montoCOP,monedaDestino);
+console.log(montoCOP+" pesos equivalen a "+cambiotrm + monedaDestino);
